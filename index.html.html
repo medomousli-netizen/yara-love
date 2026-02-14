@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Yara 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom right, #ffd6e8, #ffe6f5);
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 45px;
+      color: #ff3399;
+    }
+
+    p {
+      font-size: 22px;
+      color: #cc0066;
+    }
+
+    .buttons {
+      margin-top: 40px;
+    }
+
+    button {
+      font-size: 22px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background-color: #ff4da6;
+      color: white;
+      left: 40%;
+      top: 55%;
+    }
+
+    #noBtn {
+      background-color: #999;
+      color: white;
+      left: 55%;
+      top: 55%;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .heart {
+      position: absolute;
+      color: pink;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Yara 💕</h1>
+  <p>Will you be my Valentine? 🥺💖</p>
+
+  <button id="yesBtn">Yes 😍</button>
+  <button id="noBtn">No 😢</button>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    // Move NO button when hovered
+    noBtn.addEventListener("mouseover", function() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // YES button click
+    yesBtn.addEventListener("click", function() {
+      document.body.innerHTML = `
+        <h1 style="margin-top:150px; color:#ff3399;">
+          YAY YARA!! 💖💞<br>
+          You just made me the happiest person alive 😍✨
+        </h1>
+      `;
+    });
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
